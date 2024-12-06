@@ -4,7 +4,7 @@ console.log("Displaying simple bar chart");
 
 // Declare the chart dimensions and margins.
 const width = 1250; // Width of the chart SVG
-const height = 800; // Height of the chart SVG
+const height = 600; // Height of the chart SVG
 const margin = { top: 20, right: 20, bottom: 30, left: 40 }; // Chart margins for axes and padding
 
 // Function to fetch data from the specified JSON file
@@ -49,12 +49,17 @@ function drawChart(data) {
   const values = data.map((d) =>
     sectors.map((sector) => d[sector]) // Create an array of sector values for each year
   );
+
+
+
   
 
   const n = sectors.length; // Number of groups (sectors)
   const m = years.length; // Number of years (should correspond to all filtered years)
-  var xz = d3.range(m);
-  var yz = d3.range(n).map(() => bumps(m));
+
+  const yz = d3.range(n).map((d) => (years));
+  const xz = d3.range(m);
+  console.log("yz: ", yz);
 
   // Create stacked data structure
   const y01z = d3
@@ -62,7 +67,8 @@ function drawChart(data) {
     .keys(d3.range(n)) // Create stacks for each sector
     (d3.transpose(yz)) // Transpose rows into columns for stacking
     .map((data, i) => data.map(([y0, y1]) => [y0, y1, i]));
-    
+
+  console.log("y01z", y01z);
 
   const yMax = d3.max(yz, (y) => d3.max(y)); // Max value across all sectors for grouped bars
   const y1Max = d3.max(y01z, (y) => d3.max(y, (d) => d[1])); // Max value for stacked bars
@@ -72,7 +78,7 @@ function drawChart(data) {
     .scaleBand()
     .domain(xz) // Map index to years
     .rangeRound([margin.left, width - margin.right]) // Adjust to chart width
-    .padding(0.1);
+    .padding(0.08);
 
   // Y-axis scale for emissions values
   const y = d3
@@ -83,7 +89,7 @@ function drawChart(data) {
   // Color scale for each sector
   const color = d3
     .scaleSequential(d3.interpolateOranges)
-    .domain([-0.5 * n, 1.5 * n]);
+    .domain([-0.5 * n, 1 * n]);
 
   // Create SVG container
   const svg = d3
@@ -98,17 +104,21 @@ function drawChart(data) {
     .selectAll("g")
     .data(y01z) // Stacked data for each sector
     .join("g")
-    .attr("fill", (d, i) => color(i)) // Assign color to each sector
+    // .attr("fill", (d, i) => color(i)) // Assign color to each sector
+    // .attr("fill", (d, i) => d3.schemeAccent[i % 9])
     .selectAll("rect")
     .data((d) => d) // Add rectangles for each year's values
+    // .data(data)
     .join("rect")
-    .attr("x", (d, i) => x(i)) // Position based on year index
+    .attr("x", (d, i) => {
+      return x(i)
+    }) // Position based on year index
     .attr("y", height - margin.bottom) // Start from bottom of the chart
     .attr("width", x.bandwidth()) // Width of each bar
     .attr("height", 0) // Initial height of 0 for transition
-    .attr("rx", 100)
-    .attr("ry", 100);
-    // .attr("fill", (d, i) => d3.schemeAccent[i % 5]);
+    .attr("rx", 5)
+    .attr("rx", 5)
+    
 
   // Transition to final bar heights
   rect
@@ -117,7 +127,6 @@ function drawChart(data) {
     .duration(500) // Transition duration
     .attr("y", (d) => y(d[1])) // Final Y position (top of the bar)
     .attr("height", (d) => y(d[0]) - y(d[1])); // Final height
-    
 
   // Append X-axis
   svg
@@ -143,14 +152,12 @@ function drawChart(data) {
       .transition()
       .duration(500)
       .delay((d, i) => i * 20)
-      .attr("x", (d, i) => x(i) + (x.bandwidth() / (m*0.5)) * d[2]) // Adjust X for group positioning
-      .attr("width", x.bandwidth() / (m*0.1)) // Adjust width for grouping
+      .attr("x", (d, i) => x(i) + (x.bandwidth() / n) * d[2]) // Adjust X for group positioning
+      .attr("width", x.bandwidth() / n) // Adjust width for grouping
       .transition()
       .attr("y", (d) => y(d[1] - d[0])) // Adjust Y for grouped height
-      .attr("height", (d) => y(0) - y(d[1] - d[0]))
-      .attr("rx", 10)
-      .attr("ry", 10);
-
+      .attr("height", (d) => y(0) - y(d[1] - d[0]));
+      
   }
 
   function transitionStacked() {
@@ -164,9 +171,7 @@ function drawChart(data) {
       .attr("height", (d) => y(d[0]) - y(d[1])) // Final height for stacking
       .transition()
       .attr("x", (d, i) => x(i)) // Reset X for stacking
-      .attr("width", x.bandwidth()) // Reset width for stacking
-      .attr("rx", 100)
-      .attr("ry", 100);
+      .attr("width", x.bandwidth()); // Reset width for stacking
   }
 
   // Add buttons for user interaction
@@ -194,39 +199,7 @@ function drawChart(data) {
 
   console.log("Number of rects created:", rect.size());
   console.log("X positions for bars:", y01z.map((d) => d.map((bar, i) => x(i))));
-  console.log("x pos: "+ x(i));
-
-
-
-
-
-}
-
-function bumps(m) {
-  const values = [];
-
-  // Initialize with uniform random values in [0.1, 0.2).
-  for (let i = 0; i < m; ++i) {
-    values[i] = 0.1 + 0.1 * Math.random();
-  }
-
-  // Add five random bumps.
-  for (let j = 0; j < 5; ++j) {
-    const x = 1 / (0.1 + Math.random());
-    const y = 2 * Math.random() - 0.5;
-    const z = 10 / (0.1 + Math.random());
-    for (let i = 0; i < m; i++) {
-      const w = (i / m - y) * z;
-      values[i] += x * Math.exp(-w * w);
-    }
-  }
-
-  // Ensure all values are positive.
-  for (let i = 0; i < m; ++i) {
-    values[i] = Math.max(0, values[i]);
-  }
-
-  return values;
+  console.log("x pos: ", (d, i) => x(i));
 }
 
 // Fetch and process data

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>ChatGPT's CO2 emissions shown to scale</title>
+  <meta name="description" content="Inequality in the United States is out of control. Here we visualize the issue in a unique way." />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@mkorostoff">
+  <meta name="twitter:creator" content="@mkorostoff">
+  <meta name="twitter:title" content="ChatGPT's CO2 emissions shown to scale">
+  <meta name="twitter:description" content="Inequality in the United States is out of control. Here we visualize the issue in a unique way.">
+  <meta name="twitter:image" content="https://mkorostoff.github.io/1-pixel-wealth/img/off-the-chart.png">
+
+  <meta property="og:title" content="ChatGPT's CO2 emissions shown to scale" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Wealth inequality in the United States is out of control. Here we visualize the issue in a unique way." />
+  <meta property="og:image" content="https://mkorostoff.github.io/1-pixel-wealth/img/off-the-chart.png" />
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+  <link rel="stylesheet" type="text/css" href="main.css?version=1.10">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+</head>
+<body>
+    <!-- Button in the top-right corner -->
+  <button id="toggle-button" class="popup-button">CO2 equivalent</button>
+
+  <!-- Pop-up container -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h1>CO2 equivalent</h1>
+      <h3 style="max-width: 500px; display: flex; align-items: center; justify-content: center; margin: auto;">kg CO₂ equivalent (kg CO₂e) is a standardized measure used to express the global warming potential (GWP) of different greenhouse gases (GHGs) in terms of the equivalent amount of carbon dioxide (CO₂). This unit helps to compare the climate impacts of different gases and activities on a common scale. </h3>
+      <div class="footer">
+        <div>Updated November, 2024. Implemented from: <a target="_blank" href="https://mkorostoff.github.io/1-pixel-wealth/?v=3">Wealth shown to scale</a></div>
+        <div class="also">Based on the following article: <a href="https://piktochart.com/blog/carbon-footprint-of-chatgpt/" target="_blank">Examining ChatGPT's Carbon Footprint - Piktochart</a></div>
+      </div> 
+    </div>
+  </div>
+
+  <h1 style="width: fit-content; font-size: 16px;  position: fixed; margin-top: 20px; margin-left: 20px;  z-index: 0;">The global impact of ChatGPT's CO2 emissions shown to scale</h1>
+
+  
+
+
+
+
+  <div class="wealth-wrapper-outer">
+    <div class="wealth-row wealth-row-one">
+      <div class="title-screen">
+        <h1 style="width: 100%; height: 500px; background-color: rgb(0, 0, 0); z-index: 2;  margin: 0px; position: absolute; transform: translate(-200px, -600px); align-self: flex-start; justify-items:start;"></h1>
+        <h1>The global impact of ChatGPT's CO2 emissions shown to scale
+        <div class="logo">
+          <svg width="254" height="63" viewBox="0 0 254 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_351_14)">
+            <path d="M4.03048 36.9247C-4.36368 27.1901 1.26966 13.0751 12.5031 10.8592C16.4232 -0.724511 31.1134 -3.71326 39.3128 5.17752C45.1741 4.18881 50.3063 5.66658 54.3215 10.1497C58.3125 14.6042 59.2846 19.8239 57.6544 25.5659C61.4522 30.1487 62.7458 35.3367 60.859 41.0516C58.9873 46.7181 54.9615 50.1959 49.1833 51.6118C47.0866 57.1893 43.2737 60.8845 37.4124 62.1223C31.5602 63.3585 26.5472 61.6136 22.3615 57.3191C16.5078 58.3078 11.371 56.8376 7.35886 52.3515C3.37688 47.8985 2.36554 42.6833 4.0335 36.9232L4.03048 36.9247ZM7.54 39.8455C7.47811 40.3874 7.41773 40.8025 7.38452 41.2191C7.3332 41.8727 7.3966 42.5233 7.46453 43.1754C8.33247 51.396 17.7153 56.1493 24.8702 51.9937C27.9329 50.2156 31.0032 48.451 34.0689 46.6789C35.2584 45.9906 36.4448 45.2962 37.5649 44.6441V38.5006C37.1754 38.7179 36.872 38.8825 36.5731 39.0545C31.9164 41.7384 27.2567 44.4162 22.609 47.1151C21.7547 47.6117 20.9773 47.5951 20.1335 47.1015C17.0542 45.3038 13.9613 43.5286 10.8729 41.7474C9.79515 41.1255 8.71286 40.5127 7.54 39.844V39.8455ZM33.7263 21.7802C34.0599 21.984 34.2923 22.1319 34.5323 22.2708C39.186 24.9576 43.8337 27.6581 48.504 30.3177C49.4851 30.8762 49.941 31.5978 49.932 32.7419C49.8972 37.2175 49.9169 41.6946 49.9214 46.1702C49.9214 46.4359 49.852 46.7151 49.9878 46.9778C50.2927 47.0457 50.5312 46.8751 50.7727 46.7649C58.5873 43.2584 59.9382 32.357 53.206 27.0467C51.3841 25.6097 49.2723 24.6301 47.2813 23.4602C44.5567 21.8587 41.811 20.2933 39.0577 18.7024C37.2886 19.7243 35.5527 20.7251 33.7263 21.7802ZM24.1049 23.8844C24.5019 23.8557 24.7374 23.6534 24.991 23.5085C29.693 20.802 34.3935 18.0956 39.0849 15.371C39.9106 14.891 40.6653 14.8955 41.491 15.3755C45.0503 17.448 48.6202 19.5039 52.1962 21.5462C52.8105 21.8979 53.3886 22.3402 54.1071 22.5681C54.1464 22.3975 54.1781 22.3009 54.1887 22.2043C54.6536 17.8993 53.2709 14.2766 49.8957 11.5882C46.3802 8.78666 42.3861 8.19193 38.1898 9.87046C35.8078 10.8229 33.7052 12.3384 31.4757 13.5958C29.0062 14.9891 26.5608 16.4261 24.1049 17.8435V23.8859V23.8844ZM27.942 40.718C27.6627 40.5444 27.4952 40.4327 27.3216 40.3316C22.603 37.607 17.895 34.8658 13.1582 32.1744C12.159 31.6068 11.7393 30.8521 11.7439 29.7351C11.762 25.261 11.7529 20.7854 11.7469 16.3114C11.7469 16.0487 11.8329 15.768 11.6518 15.4857C11.1718 15.5521 10.7506 15.777 10.3416 16.0095C6.3445 18.2842 4.14671 21.7198 4.13765 26.3207C4.1286 30.917 6.29921 34.3707 10.2782 36.6771C11.6895 37.4953 13.1069 38.3058 14.5198 39.1225C17.2142 40.6772 19.9086 42.232 22.6136 43.7928C24.3812 42.7724 26.117 41.7716 27.9405 40.718H27.942ZM21.2052 33.4846C21.2052 33.065 21.2052 32.7978 21.2052 32.5306C21.2052 27.1222 21.2143 21.7138 21.1977 16.3053C21.1947 15.2713 21.5796 14.5468 22.4928 14.029C25.5525 12.2932 28.5926 10.5241 31.6372 8.76402C32.7527 8.11947 33.8621 7.46587 35.0244 6.78812C32.9112 5.07034 30.5881 4.19334 28.0009 4.10428C21.3169 3.87333 15.9236 9.09308 15.8798 15.8283C15.8496 20.4564 15.8738 25.0859 15.8768 29.714C15.8768 29.96 15.821 30.2181 16.0036 30.4913C17.6716 31.4513 19.3803 32.4355 21.2037 33.4846H21.2052ZM26.6454 55.6949C28.7435 57.4263 31.0591 58.2927 33.6357 58.3909C40.291 58.6444 45.7809 53.3764 45.8186 46.7151C45.8443 42.0131 45.8247 37.3111 45.8232 32.6091C45.8232 32.437 45.799 32.2634 45.7839 32.0717C44.045 31.071 42.3182 30.0762 40.4766 29.0151V29.9947C40.4766 35.4001 40.4676 40.807 40.4842 46.2125C40.4872 47.2178 40.1249 47.9514 39.2283 48.4299C38.543 48.7967 37.8803 49.2072 37.2056 49.5967C33.7278 51.6058 30.2485 53.6134 26.6454 55.6919V55.6949ZM30.8341 23.4451C28.5292 24.778 26.2967 26.0671 24.1019 27.3365V35.1616C26.3314 36.4477 28.5684 37.7383 30.8372 39.047C33.1195 37.7292 35.3761 36.4266 37.5951 35.145V27.3471C35.355 26.055 33.118 24.7629 30.8341 23.4451Z" fill="#FAFAFA"/>
+            <path d="M102.191 33.5632C102.212 35.9783 102.274 38.3965 101.714 40.7709C100.363 46.4978 96.888 50.2187 91.1671 51.6904C87.3346 52.6761 83.4854 52.5946 79.7329 51.2572C74.3396 49.3356 71.3221 45.3627 70.4572 39.8229C69.8112 35.6885 69.861 31.4877 70.4331 27.3427C71.3855 20.4368 76.5736 15.6126 83.5171 14.9273C86.8425 14.5982 90.1045 14.7718 93.2261 16.0473C98.1047 18.0413 100.814 21.7908 101.836 26.8732C102.281 29.0876 102.185 31.3292 102.194 33.5647L102.191 33.5632ZM95.5808 33.847C95.5808 32.5081 95.5959 31.4514 95.5778 30.3963C95.5386 28.1321 95.1718 25.9494 93.9687 23.969C91.1007 19.2474 84.0379 19.4285 80.8197 21.498C78.3653 23.0769 77.2211 25.4543 76.9193 28.2378C76.5585 31.5661 76.6551 34.9217 76.8468 38.2546C76.9917 40.7694 77.834 43.0864 79.8144 44.8133C82.0394 46.7529 84.7096 47.1514 87.5233 46.8616C91.6562 46.4359 94.3053 43.9981 95.2186 39.9467C95.6955 37.832 95.5355 35.6945 95.5808 33.847Z" fill="#FAFAFA"/>
+            <path d="M107.776 25.0147H113.85V28.7688C114.098 28.7839 114.127 28.6329 114.184 28.5409C116.29 25.1989 119.485 24.1604 123.205 24.3732C129.454 24.731 133.016 29.2473 133.377 34.8897C133.558 37.7184 133.683 40.5804 133.178 43.3971C132.055 49.6387 126.705 52.6546 121.227 52.149C118.303 51.8788 115.867 50.6938 114.177 48.0809V60.682H107.776V25.0162V25.0147ZM127.027 38.2166C127.027 37.3879 127.055 36.5577 127.022 35.7305C126.829 31.033 122.821 28.2329 118.402 29.7484C115.817 30.6345 114.537 32.63 114.235 35.2399C114.01 37.1856 114.133 39.1539 114.189 41.1117C114.207 41.7457 114.38 42.351 114.58 42.9457C115.502 45.6945 117.826 47.2221 120.928 47.1239C123.87 47.0304 126.005 45.3518 126.753 42.5623C127.138 41.1298 127.015 39.6702 127.028 38.2166H127.027Z" fill="#FAFAFA"/>
+            <path d="M228.049 51.5574H221.535C220.719 49.014 219.899 46.4645 219.075 43.8953H204.207C203.389 46.4463 202.57 48.9989 201.749 51.5574H195.234C199.553 39.5164 203.85 27.5327 208.151 15.543H215.131C219.421 27.504 223.715 39.4771 228.049 51.5574ZM211.721 20.7959C211.668 20.7989 211.614 20.802 211.561 20.805C209.66 26.7523 207.76 32.6981 205.838 38.7073H217.39C215.487 32.6951 213.603 26.7463 211.719 20.7959H211.721Z" fill="#FAFAFA"/>
+            <path d="M239.597 20.5804H231.959V15.5479H253.978V20.6031H246.328V46.4558H254V51.5366H231.96V46.5086H239.597V20.5804Z" fill="#FAFAFA"/>
+            <path d="M166.723 25.0239H172.776V28.9666C173.09 28.8987 173.109 28.6617 173.186 28.5032C174.302 26.2043 176.214 25.0163 178.652 24.571C181.081 24.1272 183.478 24.2042 185.727 25.3197C188.483 26.6873 189.804 29.0813 190.285 32.0218C190.424 32.8671 190.476 33.7184 190.474 34.5758C190.468 39.9586 190.471 45.3413 190.471 50.7241V51.5286H184.146C184.011 51.2584 184.077 50.9777 184.076 50.709C184.071 45.7293 184.076 40.748 184.071 35.7683C184.071 34.7328 183.962 33.7139 183.553 32.7433C182.817 30.9983 181.467 30.0942 179.626 29.8768C178.004 29.6851 176.444 29.8617 175.103 30.8761C173.618 32.0006 173.105 33.6218 173.094 35.3954C173.062 40.4763 173.079 45.5572 173.076 50.6381C173.076 50.9143 173.076 51.189 173.076 51.5241H166.723V25.0239Z" fill="#FAFAFA"/>
+            <path d="M144.103 40.3419C143.982 42.5367 144.158 44.5805 145.762 46.1111C147.929 48.1821 150.519 48.1263 153.159 47.2146C154.787 46.653 156.088 45.5858 157.182 44.2032C158.506 44.9655 159.803 45.7111 161.145 46.484C159.75 48.8976 157.827 50.6109 155.241 51.432C151.39 52.6532 147.534 52.5958 143.846 50.8403C140.183 49.0969 138.324 45.9828 137.991 42.0446C137.749 39.1978 137.66 36.3177 138.192 33.4724C139.124 28.47 142.924 25.0012 148.002 24.4593C150.516 24.1906 152.987 24.3204 155.341 25.2925C158.719 26.6888 160.782 29.2353 161.608 32.7825C162.186 35.2611 161.859 37.7789 161.964 40.3435H144.101L144.103 40.3419ZM144.075 36.0098H156.101C156.21 33.4542 155.934 31.0497 153.587 29.5915C151.395 28.23 148.981 28.2073 146.771 29.5009C144.338 30.9244 144.054 33.4105 144.074 36.0098H144.075Z" fill="#FAFAFA"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_351_14">
+            <rect width="254" height="62.5117" fill="white"/>
+            </clipPath>
+            </defs>
+            </svg>
+          </div> 
+          </h1>
+        
+          
+        
+          
+        
+        <div class="scroll-this-way">
+          <span>Scroll right</span>
+          <div id="instructions" class="instructions">To scroll right, use shift + mousewheel. If you have a touchpad, swipe sideways.</div>
+        </div>
+      </div>
+      <div class="wealth-wrapper">
+        <h2 class="wealth-title-explain">1g</h2>
+        <h3>CO2 equivalent</h3>
+        <p style="position: absolute; transform: translate(0px, 50px); background-color: black;">represented as one pixel</p>
+        <div class="line">
+          <svg width="8" height="314" viewBox="0 0 8 314" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 0.333333C2.52724 0.333333 1.33333 1.52724 1.33333 3C1.33333 4.47276 2.52724 5.66667 4 5.66667C5.47276 5.66667 6.66667 4.47276 6.66667 3C6.66667 1.52724 5.47276 0.333333 4 0.333333ZM3.64645 313.354C3.84171 313.549 4.15829 313.549 4.35355 313.354L7.53553 310.172C7.7308 309.976 7.7308 309.66 7.53553 309.464C7.34027 309.269 7.02369 309.269 6.82843 309.464L4 312.293L1.17157 309.464C0.976311 309.269 0.659728 309.269 0.464466 309.464C0.269204 309.66 0.269204 309.976 0.464466 310.172L3.64645 313.354ZM3.5 3L3.5 313H4.5L4.5 3H3.5Z" fill="white"/>
+            </svg>
+        <div class="wealth one-thousand"></div>
+        
+        <!-- <div class="arrow">
+          <svg viewBox="668 -8 14 70" width="14" height="70">
+            <path d="M 676.4207 61.25 L 673.2793 61.25 L 673.2793 6.822266 L 668.6 6.822266 L 674.85 -7.8 L 681.1 6.822266 L 676.4207 6.822266 Z" fill="#ccc"/>
+          </svg> -->
+        </div>
+      </div>
+
+      <div class="wealth-wrapper median">
+        <h2 class="wealth-title-explain">4.32g<span class="explainer"></span></h2>
+        <h3>estimate of one 
+          ChatGPT prompt</h3>
+        <div class="line"></div>
+        <svg width="8" height="314" viewBox="0 0 8 314" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 0.333333C2.52724 0.333333 1.33333 1.52724 1.33333 3C1.33333 4.47276 2.52724 5.66667 4 5.66667C5.47276 5.66667 6.66667 4.47276 6.66667 3C6.66667 1.52724 5.47276 0.333333 4 0.333333ZM3.64645 313.354C3.84171 313.549 4.15829 313.549 4.35355 313.354L7.53553 310.172C7.7308 309.976 7.7308 309.66 7.53553 309.464C7.34027 309.269 7.02369 309.269 6.82843 309.464L4 312.293L1.17157 309.464C0.976311 309.269 0.659728 309.269 0.464466 309.464C0.269204 309.66 0.269204 309.976 0.464466 310.172L3.64645 313.354ZM3.5 3L3.5 313H4.5L4.5 3H3.5Z" fill="white"/>
+          </svg>
+        <div class="wealth median-income"></div>
+      </div>
+
+      <div class="wealth-wrapper million">
+        <h2 class="wealth-title-explain">1 kg</h2>
+        <div class="wealth"></div>
+      </div>
+
+      <div class="wealth-wrapper billion">
+        <div class="wealth">
+          <div class="wealth-info">
+            <h2 class="wealth-title">1 million kg</h2>
+            <div class="wealth-undertitle">kg CO2 equivalent</div>
+          </div>
+        </div>
+      </div>
+
+      <div name="bezos" class="wealth-wrapper bezos">
+        <div id="bezos" class="wealth ruler">
+          <div class="wealth-info">
+            <h2 class="wealth-title">15'768'000 kg</h2>
+            <div class="wealth-undertitle">kg CO2 equivalent</div>
+            <div class="wealth-undertitle">Chat GPT’s annual CO2 emissions</div>
+            <div class="key">
+              <span>100'000 kg</span>
+            </div>
+          </div>
+          <!-- <div class="counter" id="bezos-counter"></div> -->
+          
+
+          <div class="text-infobox infobox first">
+            <div class="title">Using ChatGPT is a privilege which not all people on the planet have.</div>
+          </div>
+
+          <div class="text-infobox infobox map-row">
+            
+            <!-- <div class="title">We rarely see wealth inequality represented to scale. This is part of the reason Americans <a href="https://www.ncbi.nlm.nih.gov/pubmed/26162108" target="_blank">consistently under-estimate</a> the relative wealth of the super rich.</div> -->
+            <div class="title" style="transform: translate(-140%); max-width: 400px;">Countries with access to ChatGPT</div>
+            <div  class="title" id="map-container" style=" height: 600px; z-index: 5; color: black;"></div>
+            <script src="script.js"></script>
+            
+
+            <!-- <div id="map"></div> -->
+            <!-- <script src="script.js"></script> -->
+    
+          </div>
+
+          <div class="five-pixels text-infobox infobox-half infobox">
+            <div class="title">Every 10 pixels you scroll is 5 million kg of CO2 equivalent.</div>
+          </div>
+
+          <div class="coming-up text-infobox infobox">
+            <div class="title">OK, we're coming up on the end now.</div>
+          </div>
+
+          <div class="text-infobox infobox">
+            <div id="bezos-counter-start" class="title">
+              <p>Lol, just kidding, we're about a third of the way. Keep scrolling though, there's more to see.</p>
+            </div>
+          </div>
+
+
+          <div class="text-infobox infobox infobox-half">
+            <div class="title">Let's put the number of one prompt in perspective by comparing it to some familiar things. 1 query = 4.32g</div>
+          </div>
+
+          <div class="infobox infobox-half lifetime">
+            <div class="title-square-wrapper">
+              <div class="title">watching one hour of videos (15 queries)</div>
+              <div class="square"></div>
+            </div>
+          </div>
+
+          <div class="infobox infobox-half healthcare">
+            <div class="title-square-wrapper">
+              <div class="title">Consuming 500ml of water (20-50 queries)</div>
+              <div class="square"></div>
+            </div>
+          </div>
+
+          <div class="infobox infobox-half amazon-year">
+            <div class="title-square-wrapper">
+              <div class="title">One load of laundry washed at 86 degrees Fahrenheit, then dried on a clothesline (139 queries)</div>
+              <div class="square"></div>
+            </div>
+          </div>
+
+          <div class="infobox infobox-half year-veteran">
+              
+              <div class="square">
+                <div class="title">a round-trip flight from San Francisco to Seattle (92,593 queries)  </div>
+              </div>
+
+            
+          </div>
+
+          <div class="infobox infobox-half year-chemo">
+            <div class="square">
+              <div class="title">While the exact number is obscure, reports indicate that ChatGPT is estimated to run on 30,000 GPUs per day. </div>
+              <div class="midtext-wrapper">
+                <div class="midtext" style="font-family: 'Signifier';font-size: 40px;">We know that ChatGPT received <a href="https://nerdynav.com/chatgpt-statistics/#:~:text=Cost+of+Running+ChatGPT+Per+Day&text=His+estimates+were+based+on,leading+to+increase+in+costs." target="_blank">10 million queries per day</a> during launch week in November 2022.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="infobox infobox-half text-infobox">
+            <div class="title">
+              <p>Taking this data, it shows how incomprehensible the scale of CO2 emissions really is</p>
+            </div>
+          </div>
+
+          <!-- <div class="infobox infobox-quarter celebrities">
+            <div class="column-infobox">
+              <div class="sub-infobox goldman">
+                <div class="title">Wealth of Goldman Sachs CEO David Solomon ($50 million)</div>
+                <div class="square shadow"></div>
+              </div>
+
+            </div>
+            <div class="sub-infobox beyonce">
+              <div class="title">Wealth of Beyonc&eacute; ($400 million)</div>
+              <div class="square shadow"></div>
+            </div>
+
+            <div class="sub-infobox tim-cook">
+              <div class="title">Wealth of Apple CEO Tim Cook ($625 million)</div>
+              <div class="square shadow"></div>
+            </div>
+
+            <div class="column-infobox">
+              <div class="sub-infobox doctor small">
+                <div class="title">Lifetime earnings of a doctor, on average ($6.7 million)</div>
+                <div class="square shadow"></div>
+              </div>
+
+              <div class="sub-infobox lawyer small">
+                <div class="title">Lifetime earnings of a lawyer, on average ($4 million)</div>
+                <div class="square shadow"></div>
+              </div>
+            </div>
+
+            <div class="sub-infobox hedgefund">
+              <div class="title">Lifetime earnings of a hedge fund manager, on average ($84 million)</div>
+              <div class="square shadow"></div>
+            </div>
+
+          </div> -->
+
+          <div class="infobox infobox-close text-infobox">
+            <div class="title">
+              <p>And this is of course only the example for OpenAI.</p>
+            </div>
+          </div>
+
+          <div class="infobox infobox-close text-infobox">
+            <div class="title">
+              <p>Of course OpenAI has only been around for some years. Lets have a look at other big data corporations such as Google.</p>
+            </div>
+          </div>
+
+          <div id="line-chart" class="infobox infobox-quarter line-chart">
+            <div class="chart-outer">
+              <div class="chart-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="150 276 604 133" width="604" height="133">
+                    <defs>
+                      <font-face font-family="Arial" font-size="16" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="73.24219" slope="0" x-height="518.5547" cap-height="716.3086" ascent="905.2734" descent="-211.91406" font-weight="400">
+                        <font-face-src>
+                          <font-face-name name="ArialMT"/>
+                        </font-face-src>
+                      </font-face>
+                      <font-face font-family="Arial" font-size="12" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="73.24219" slope="0" x-height="518.5547" cap-height="716.3086" ascent="905.2734" descent="-211.91406" font-weight="400">
+                        <font-face-src>
+                          <font-face-name name="ArialMT"/>
+                        </font-face-src>
+                      </font-face>
+                      <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+                        <g>
+                          <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+                        </g>
+                      </marker>
+                    </defs>
+                    <metadata> Produced by OmniGraffle 7.19.2\n2021-12-02 15:16:55 +0000</metadata>
+                    <g id="Canvas_1" stroke-dasharray="none" fill="none" fill-opacity="1" stroke="none" stroke-opacity="1">
+                      <title>Canvas 1</title>
+                      <g id="Canvas_1_Layer_1">
+                        <title>Layer 1</title>
+                        <g id="Graphic_3">
+                          <text transform="translate(668 353.7383)" fill="black">
+                            <tspan font-family="Söhne" font-size="14" font-weight="400" fill="black" x="45.36719" y="14">Google</tspan>
+                            <tspan font-family="Söhne" font-size="14" font-weight="400" fill="black" x="-10" y="31.523438">CO2 equivalent </tspan>
+                            <tspan font-family="Söhne" font-size="12" font-weight="400" fill="black" x="13.105469" y="46.046875">(14.31 billion)</tspan>
+                          </text>
+                        </g>
+                        <g id="Graphic_5">
+                          <text transform="translate(173 353.7383)" fill="black">
+                            <tspan font-family="Söhne" font-size="16" font-weight="400" fill="black" x="0" y="14">0</tspan>
+                          </text>
+                        </g>
+                        <g id="Graphic_9">
+                          <text transform="translate(155 281.5)" fill="black">
+                            <tspan font-family="Söhne" font-size="16" font-weight="400" fill="black" x="0" y="14">15.768 million kg</tspan>
+                          </text>
+                        </g>
+                        <g id="Line_10">
+                          <line x1="197.54418" y1="304.02344" x2="197.09944" y2="345.59456" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="square" stroke-linejoin="round" stroke-width="1"/>
+                        </g>
+                        <g id="Line_2">
+                          <line x1="203" y1="362" x2="703" y2="362" stroke="black" stroke-linecap="square" stroke-linejoin="round" stroke-width="13"/>
+                        </g>
+                        <g id="Graphic_11">
+                          <rect x="196.49399" y="355.494" width=".86" height="13" fill="#68bc36"/>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <!-- <button id="ok-zoomer"></button> -->
+                <div id="ok-zoomer">
+                  <a class="zoom-in" onclick="toggleZoom()" href="javascript:;">Zoom In</a>
+                  <a class="zoom-out" onclick="toggleZoom()" href="javascript:;">Zoom Out</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="infobox infobox-close text-infobox">
+              <div class="title">
+                <p>We can have a world in which big corporations exist but we also have a choice on how much we use these services.<p>
+                </div>
+              </div>
+
+        <div class="infobox infobox-close text-infobox">
+          <div class="title">
+            <p>ChatGPT's power usage is still not optimized and thus needs regulation.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close text-infobox">
+          <div class="title">
+            <p>Thus the people priviliged enough to use this service have the responsibility to coregulate the power consumption.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div id="four-hundred" class="wealth-wrapper four-hundred">
+      <div class="wealth ruler">
+        <h2 class="wealth-title">400 richest Americans ($3.2 trillion)</h2>
+        <div class="counter" id="four-hundred-counter"></div>
+        <div class="key">
+          <span>$80 million</span>
+        </div>
+
+        <div class="infobox infobox text-infobox intro">
+          <div class="title">
+            Jeff Bezos may be insanely rich, but it is a drop in the ocean compared to the combined wealth of his peers. The 400 richest Americans own about $3.2 trillion, which is more than the bottom 60% of Americans.
+          </div>
+        </div>
+
+        <div id="four-hundred-counter-start" class="people-wrapper-outer four-hundred-people infobox infobox-close">
+          <div class="people-wrapper center-sticky">
+            <div class="people">
+              <div class="people-label bubble">400 people</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="people-wrapper-outer sixty-percent-people infobox infobox-close">
+          <div id="sixty-percent" class="people-wrapper center-sticky">
+            <div class="people-label bubble">Bottom 60% <div class="people-sub-label">(Scroll Down)</div></div>
+            <div id="sixty-percent-indicator" class="percent">0.0%</div>
+          </div>
+        </div>
+
+        <div class="infobox infobox text-infobox intro">
+          <div class="title">
+            <p>A trillion dollars is such a large figure, that you might as well say "eleventy gajillion zillion dollars."  So in this section, we will try to understand the scale of this figure by looking at what could be accomplished with various chunks of this wealth.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            Some will argue that using this wealth for public benefit is not possible, because it's "tied up" in stocks, and therefore inaccessible. <a href="https://github.com/MKorostoff/1-pixel-wealth/blob/master/THE_PAPER_BILLIONAIRE.md" target="_blank">This is just not true</a>.
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>As we proceed, try to keep in mind: all of this wealth is controlled by a group so small, that they could fit on a single 747 airplane&#8212;with 260 seats left over.</p>
+          </div>
+        </div>
+
+        <div class="plane-wrapper-outer infobox infobox-close">
+          <div class="plane-wrapper center-sticky">
+            <div class="plane">
+              <img src="img/plane.png" />
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">What could we do with under 10% of this money?</h2>
+        </div>
+
+        <div class="infobox infobox-quarter flex">
+          <div class="piechart six-percent">
+            <svg class="piechart-outer" viewBox="0 0 32 32">
+              <circle class="piechart-inner" r="16" cx="16" cy="16" />
+            </svg>
+            <span class="label">6%</span>
+            <div class="dotted-line"></div>
+            <div class="description">
+              <h2>Vaccinate every human on earth against coronavirus</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Based on the <a href="https://www.washingtonpost.com/world/eu-coronavirus-vaccines-cheaper-than-united-states/2020/12/18/06677e34-4139-11eb-b58b-1623f6267960_story.html">cost of vaccines</a> and the <a href="https://www.who.int/docs/default-source/coronaviruse/act-accelerator/covax/costs-of-covid-19-vaccine-delivery-in-92amc_08.02.21.pdf" target="_blank">cost of delivery</a>, it would take around <a href="https://github.com/MKorostoff/1-pixel-wealth/blob/master/docs/COST_OF_VACCINATION.md" target="_blank">$200 billion</a> to vaccinate every person on earth, which is about 6% of the wealth currently controlled by 400 Americans. After paying for this vaccination program, these individuals would still be $40 billion richer than they were before the pandemic.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Even setting aside the desperate humanitarian need for a global vaccination, there is still a strong self-interested argument that wealthy countries should do it: the longer covid circulates in the world, the more chance of a <a href="https://www.newscientist.com/article/mg24933201-800-vaccine-nationalism-will-leave-everyone-more-at-risk-of-coronavirus/" target="_blank">vaccine resistant variant</a> emerging, and undoing all the vaccine progress we've already made.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>The World Health Organization is currently organizing a global vaccine donation program which aims to vaccinate <a href="https://www.who.int/initiatives/act-accelerator/covax" target="_blank">about 20%</a> of residents in poor countries by the end of 2021, and even that approach has <a href="https://www.washingtonpost.com/world/2021/04/01/covax-healthcare-workers-funding/" target="_blank">substantial funding shortfalls</a>.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-quarter flex">
+          <div class="piechart three-percent">
+            <svg class="piechart-outer" viewBox="0 0 32 32">
+              <circle class="piechart-inner" r="16" cx="16" cy="16" />
+            </svg>
+            <span class="label">3%</span>
+            <div class="dotted-line"></div>
+            <div class="description">
+              <h2>Permanently eradicate malaria</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Malaria is one of the worst infectious diseases ever visited on mankind, possibly killing more people than any other infectious disease in history. In the 20th century alone, malaria killed more people than the Black Death.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-quarter">
+          <div class="infectious">
+            <div class="malaria-bar">
+              <div class="square shadow">
+                <div class="title">Annual Malaria deaths<br> (409,000)</div>
+              </div>
+            </div>
+            <div class="ebola-bar"><div class="title">Ebola deaths in <strong>all of human history</strong> combined (about 15,000)</div>
+              <div class="square shadow"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            These figures are even more shocking when you learn that malaria overwhelmingly kills children; around two-thirds of malaria deaths each year are children under five. That's around 275,000 children.
+          </div>
+        </div>
+
+        <div class="infobox infobox-close malaria flex">
+          <div id="babies-wrapper" class="babies-wrapper center-sticky">
+            <div id="babies" class="babies">
+              <div class="scroll-indicator bubble">Children under five killed by malaria each year <div class="people-sub-label">(Scroll Down)</div></div>
+              <span id="baby-counter" class="baby-counter bubble">10</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p><em>All</em> of these deaths are preventable. Treating and preventing malaria is a well understood science, universally practiced in the developed world.</p>
+            <p><a href="https://www.ncbi.nlm.nih.gov/pubmed/25551454" target="_blank">It is estimated</a> that malaria could be globally eradicated by 2030 for a cost around $1.84 per at-risk person per year, or around $100 billion total. This would be around 3% of the wealth currently possessed by the 400 richest Americans.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Around 800 children will die of malaria today. A small group of super rich people could stop it for a sum of money so small that they would likely never even notice its absence. But they choose not to.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-quarter flex">
+          <div class="piechart two-point-five-percent">
+            <svg class="piechart-outer" viewBox="0 0 32 32">
+              <circle class="piechart-inner" r="16" cx="16" cy="16" />
+            </svg>
+            <span class="label">2.5%</span>
+            <div class="dotted-line"></div>
+            <div class="description">
+              <h2>Wipe out all the delinquent medical debt in America</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Americans have about <a href="https://www.pbs.org/newshour/health/millennials-rack-up-the-most-medical-debt-and-more-frequently" target="_blank">$81 billion</a> in medical debt that is sufficiently past due as to appear on their credit report. These are generally small debts, with a median value of <a href="https://files.consumerfinance.gov/f/201412_cfpb_reports_consumer-credit-medical-and-non-medical-collections.pdf" target="_blank">$207 dollars</a> per person.</p>
+            <p> These debts hinder the credit of over 50 million Americans, and do long term damage to their housing, employment, and borrowing options. The cost of repaying this debt dollar-for-dollar would be around 2.5% of the wealth controlled by 400 Americans.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            This situation looks even better once you understand that delinquent debt is often purchased for as <a href="https://www.ksl.com/article/46455844/charity-buys-and-erases-past-due-medical-debt" target="_blank">little as 1%</a> of its face value. This would make the total cost of eliminating all delinquent medical debt around $810 million. In 2020, the richest 400 Americans accrued this amount roughly every 29 hours.
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="chart medical-chart">
+            <img src="img/medical.svg" />
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            Note that this figure includes only <em>delinquent</em> medical debt, not all medical debt. The value of all medical debt in America is not publicly known, but probably in the neighborhood of <a href="https://github.com/MKorostoff/1-pixel-wealth/blob/master/docs/VALUE_OF_MEDICAL_DEBT.md" target="_blank">$300 billion</a>, or 9% of the wealth controlled by 400 Americans.
+          </div>
+        </div>
+
+        <div class="infobox infobox-quarter flex">
+          <div class="piechart five-percent five-point-three-percent">
+            <svg class="piechart-outer" viewBox="0 0 32 32">
+              <circle class="piechart-inner" r="16" cx="16" cy="16" />
+            </svg>
+            <span class="label">5.3%</span>
+            <div class="dotted-line"></div>
+            <div class="description">
+              <h2>Lift every American out of poverty.</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            As of 2021, around 38 million Americans lived in poverty. If Americans in poverty were a state, they would be second largest by population. There are more Americans living in poverty than the entire population of Canada.
+          </div>
+        </div>
+
+        <div class="infobox infobox-close">
+          <div class="chart">
+            <h3>Population of US States compared to poverty, 2021</h3>
+            <img src="img/poverty.svg">
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p><a href="https://www.census.gov/content/dam/Census/library/publications/2019/demo/p60-266.pdf" target="_blank">Every single person</a> in America could be lifted above the poverty line with a one-time cash subsidy of around $10,000 per impoverished family (and about $7,000 for impoverished individuals). The total cost would be $170 billion, a little over 5% of the wealth currently controlled by 400 individuals.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>It may seem counter intuitive that a one-time subsidy could have any lasting impact on chronic poverty. But one of the surprising truths about poverty is that it's fluid. Americans move in and out of poverty many times throughout their lives, and one good year can have a massive and long lasting effect.</p>
+
+              <p>A wealth of data now supports the idea that <a href="https://www.givedirectly.org/research-on-cash-transfers/" target="_blank">one-time cash transfers can permanently transform a local economy.</a> Given a sudden windfall, people invest in their future. They go back to school, obtain transportation, pay for childcare, pay down debilitating debts, and do any number of things to improve their career prospects and financial future.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>In the US, for all of the people that escape poverty in any given year, <a href="https://poverty.ucdavis.edu/sites/main/files/file-attachments/stevens_1994aerpp.pdf" target="_blank">about half stay out of poverty for at least five years afterwards</a>. About a third are still out of poverty ten years later.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>This would not be a permanent fix for all Americans. Surely, some would quickly return to poverty, and others face debts so large that the subsidy would make little difference. But for tens of millions of Americans, this would be a life changing event. It would be a generation defining social program that reshapes our economy for decades to come.</p>
+          </div>
+       </div>
+
+        <div class="infobox infobox-quarter flex">
+          <div class="piechart seven-point-five-percent tiny">
+            <svg class="piechart-outer" viewBox="0 0 32 32">
+              <circle class="piechart-inner" r="16" cx="16" cy="16" />
+            </svg>
+            <span class="label">7.5%</span>
+            <div class="dotted-line"></div>
+            <div class="description">
+              <h2>Provide clean drinking water and toilet access to every human on earth.</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Around <a href="https://www.who.int/news-room/detail/12-07-2017-2-1-billion-people-lack-safe-drinking-water-at-home-more-than-twice-as-many-lack-safe-sanitation" target="_blank">844 million people</a> have no access to clean water of any kind. About the same number have no access to a toilet or latrine of any kind, and therefore defecate in the open.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="worldchart">
+            <img src="img/no_clean_water.png"/>
+            <h2 class="description">No clean water</h2>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Contaminated water is a major source of disease, including cholera, dysentery, and typhoid. <a href="https://www.who.int/news-room/fact-sheets/detail/drinking-water">It is estimated</a> that contaminated water kills about 829,000 people every year, making it one of the world's biggest killers. The cost to provide clean water and waste disposal for everyone on earth would be about <a href="https://web.archive.org/web/20220221195720/https://www.who.int/water_sanitation_health/watandmacr3.pdf" target="_blank">$240 billion</a>, or 7.5% of the wealth controlled by the 400 richest Americans.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            OK, now that we've established the scale of inequality in the United States, let's dare to dream a little bigger.
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <h2 class="title what-could-we-do">What could we do with under 40% of this money?</h2>
+        </div>
+
+
+        <div class="infobox infobox-quarter flex">
+          <div class="piechart forty-percent tiny">
+            <svg class="piechart-outer" viewBox="0 0 32 32">
+              <circle class="piechart-inner" r="16" cx="16" cy="16" />
+            </svg>
+            <span class="label">39.6%</span>
+            <div class="dotted-line"></div>
+            <div class="description">
+              <h2>Provide paid maternity and paternity leave to every American for the next 100 years</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Paid maternity and paternity leave are estimated to cost around <a href="https://www.americanactionforum.org/insight/the-fiscal-cost-of-a-paid-parental-leave-program-by-state/" target="_blank">$12 billion</a> per year. This is 0.39% of the wealth controlled by 400 Americans. It is 5% of the wealth they accrued in 2020 alone.</p>
+            <p>If they repeated this payment every year for the next 100 years, it would equal 39% of the wealth they control today.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>This is a more complex program to estimate than the others considered on this page, because the expense would be continuous, rather than one-time, and the cost is highly variable based on the size of the benefit provided. Still, using the <a href="https://web.archive.org/web/20210809092211/https://www.manning-napier.com/insights/blogs/insights-for-non-profits/endowments-and-foundations-a-closer-look-at-spending-rules" target="_blank">5% endowment payout rule</a> the super wealthy should be able to finance a family leave program about 12 times more generous than the one contemplated here <u>forever</u> and still get richer into perpetuity, even accounting for inflation.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-quarter flex">
+          <div class="piechart forty-percent tiny">
+            <svg class="piechart-outer" viewBox="0 0 32 32">
+              <circle class="piechart-inner" r="16" cx="16" cy="16" />
+            </svg>
+            <span class="label">40%</span>
+            <div class="dotted-line"></div>
+            <div class="description">
+              <h2>Give $10,000 to every American household</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            There are about 128 million households in the United States. To give each one $10,000 would cost $1.28 trillion, or about 40% of the wealth controlled by 400 Americans.
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>As the coronavirus raged through America in 2020, working people were frequently presented with a seemingly impossible choice between death by premature reopening and an economic depression brought about through a continued quarantine. Unspoken in this false choice was the supposition that Americans could not pay their living expenses without either work or unsustainable government deficit spending&mdash;where else could the money have possibly come from?</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <h2 class="title what-could-we-do">What could we do with 60% of this money?</h2>
+        </div>
+
+        <div class="ninety-wrapper-outer infobox infobox-close">
+          <div class="ninety-wrapper center-sticky">
+            <div class="ninety">
+              <img src="img/sixty_percent.svg" />
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            These programs combined would completely transform our world. By redistributing this wealth, millions of lives would be saved. Billions would be rescued from poverty and disease. By inconveniencing <em>just 400 people</em>, the entire human race could advance to a new, unprecedented level of development.
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close all-of-them">
+          <div class="title">
+            And <em>all</em> of them would still be billionaires afterwards.
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            Is it really so radical to suggest that this is the right thing to do? Given the choice between millions of deaths, and slightly shrinking the fortunes of a few super rich people, how could anyone conclude that the death of millions is preferable?
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">We cannot accept this level of inequality any longer.</h2>
+        </div>
+
+      </div>
+    </div>
+  </div> </div> -->
+  <!-- <div class="footer">
+    <div>Updated Novmber, 2024. <a target="_blank" href="https://github.com/MKorostoff/1-pixel-wealth/blob/master/README.md">About this page</a></div>
+    <div class="also">Based on the following article: <a href="https://piktochart.com/blog/carbon-footprint-of-chatgpt/" target="_blank">Examining ChatGPT's Carbon Footprint - Piktochart</a></div>
+  </div>  -->
+
+<!-- </div> -->
+<script type="text/javascript" src="main.js?version=1.9"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2320532-12"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-2320532-12');
+</script>
+</body>
+</html>

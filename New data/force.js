@@ -65,12 +65,12 @@ function drawChart(data) {
   const y01z = d3
     .stack()
     .keys(d3.range(n)) // Create stacks for each sector
-    (d3.transpose(yz)) // Transpose rows into columns for stacking
+    (d3.transpose(values)) // Transpose rows into columns for stacking
     .map((data, i) => data.map(([y0, y1]) => [y0, y1, i]));
 
   console.log("y01z", y01z);
 
-  const yMax = d3.max(yz, (y) => d3.max(y)); // Max value across all sectors for grouped bars
+  const yMax = d3.max(values, (y) => d3.max(y)); // Max value across all sectors for grouped bars
   const y1Max = d3.max(y01z, (y) => d3.max(y, (d) => d[1])); // Max value for stacked bars
 
   // X-axis scale for years
